@@ -37,7 +37,7 @@ namespace GIWEB
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<GIWEBContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("GIWEBContext")));
+                    options.UseMySql(Configuration.GetConnectionString("GIWEBContext"), builder => builder.MigrationsAssembly("GIWEB")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
