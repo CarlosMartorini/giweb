@@ -1,6 +1,6 @@
 using System;
 
-namespace GIWEB.Models
+namespace GIWEB.Models.ViewModels
 {
     public class ErrorViewModel
     {
