@@ -1,12 +1,11 @@
 ﻿@model GIWEB.Models.Owner
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Novo Proprietário";
 }
 
-<h2>Create</h2>
+<h2>@ViewData["Title"]</h2>
 
-<h4>Owners</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -48,14 +47,14 @@
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Salvar" class="btn btn-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar</a>
 </div>
 
 @section Scripts {
