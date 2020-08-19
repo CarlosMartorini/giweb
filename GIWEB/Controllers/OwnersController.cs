@@ -54,7 +54,7 @@ namespace GIWEB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Cpf,Rg,Tel,Cel,Email,Address")] Owners owners)
+        public async Task<IActionResult> Create([Bind("Id,Name,Cpf,Rg,Tel,Cel,Email,Address")] Owner owners)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace GIWEB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Cpf,Rg,Tel,Cel,Email,Address")] Owners owners)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Cpf,Rg,Tel,Cel,Email,Address")] Owner owners)
         {
             if (id != owners.Id)
             {
