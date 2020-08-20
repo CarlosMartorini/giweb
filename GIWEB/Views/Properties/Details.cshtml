@@ -1,0 +1,59 @@
+﻿@model GIWEB.Models.Propertie
+
+@{
+    ViewData["Title"] = "Consulta do Imóvel";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Num)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Num)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Neighborhood)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Neighborhood)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cep)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Uf)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Uf)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RentValue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RentValue)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Voltar</a>
+</div>

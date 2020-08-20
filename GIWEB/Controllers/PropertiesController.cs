@@ -2,17 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GIWEB.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using GIWEB.Models;
 
 namespace GIWEB.Controllers
 {
     public class PropertiesController : Controller
     {
-        // GET: PropertiesController
-        public ActionResult Index()
+        private readonly GIWEBContext _context;
+
+        public PropertiesController(GIWEBContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        // GET: PropertiesController
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Propertie.ToListAsync());
         }
 
         // GET: PropertiesController/Details/5

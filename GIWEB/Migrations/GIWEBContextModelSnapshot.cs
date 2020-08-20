@@ -94,7 +94,7 @@ namespace GIWEB.Migrations
 
                     b.HasIndex("PropertieId");
 
-                    b.ToTable("Owners");
+                    b.ToTable("Owner");
                 });
 
             modelBuilder.Entity("GIWEB.Models.Plots", b =>
@@ -124,9 +124,9 @@ namespace GIWEB.Migrations
 
                     b.Property<string>("City");
 
-                    b.Property<string>("N");
-
                     b.Property<string>("Neighborhood");
+
+                    b.Property<string>("Num");
 
                     b.Property<double>("RentValue");
 

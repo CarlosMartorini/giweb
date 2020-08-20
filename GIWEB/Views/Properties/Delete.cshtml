@@ -1,0 +1,63 @@
+﻿@model GIWEB.Models.Propertie
+
+@{
+    ViewData["Title"] = "Excluir Imóvel";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>Tem certeza de que deseja excluir?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Num)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Num)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Neighborhood)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Neighborhood)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cep)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Uf)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Uf)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RentValue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RentValue)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Excluir" class="btn btn-danger" /> |
+        <a asp-action="Index">Voltar</a>
+    </form>
+</div>
+

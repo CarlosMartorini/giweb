@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GIWEB.Migrations
 {
     [DbContext(typeof(GIWEBContext))]
-    [Migration("20200819172745_OtherEntities")]
+    [Migration("20200820145813_OtherEntities")]
     partial class OtherEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,7 +96,7 @@ namespace GIWEB.Migrations
 
                     b.HasIndex("PropertieId");
 
-                    b.ToTable("Owners");
+                    b.ToTable("Owner");
                 });
 
             modelBuilder.Entity("GIWEB.Models.Plots", b =>
@@ -126,9 +126,9 @@ namespace GIWEB.Migrations
 
                     b.Property<string>("City");
 
-                    b.Property<string>("N");
-
                     b.Property<string>("Neighborhood");
+
+                    b.Property<string>("Num");
 
                     b.Property<double>("RentValue");
 

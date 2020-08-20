@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,7 +10,7 @@ namespace GIWEB.Models
     {
         public int Id { get; set; }
         public string Address { get; set; }
-        public string N { get; set; }
+        public string Num { get; set; }
         public string Neighborhood { get; set; }
         public string Cep { get; set; }
         public string City { get; set; }
@@ -21,11 +22,11 @@ namespace GIWEB.Models
         {
         }
 
-        public Propertie(int id, string address, string n, string neighborhood, string cep, string city, string uf, double rentValue)
+        public Propertie(int id, string address, string num, string neighborhood, string cep, string city, string uf, double rentValue)
         {
             Id = id;
             Address = address;
-            N = n;
+            Num = num;
             Neighborhood = neighborhood;
             Cep = cep;
             City = city;

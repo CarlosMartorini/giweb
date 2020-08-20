@@ -22,7 +22,7 @@ namespace GIWEB.Controllers
         // GET: Owners
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Owners.ToListAsync());
+            return View(await _context.Owner.ToListAsync());
         }
 
         // GET: Owners/Details/5
@@ -33,7 +33,7 @@ namespace GIWEB.Controllers
                 return NotFound();
             }
 
-            var owners = await _context.Owners
+            var owners = await _context.Owner
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (owners == null)
             {
@@ -54,15 +54,15 @@ namespace GIWEB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Cpf,Rg,Tel,Cel,Email,Address")] Owner owners)
+        public async Task<IActionResult> Create([Bind("Id,Name,Cpf,Rg,Tel,Cel,Email,Address")] Owner owner)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(owners);
+                _context.Add(owner);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(owners);
+            return View(owner);
         }
 
         // GET: Owners/Edit/5
@@ -73,7 +73,7 @@ namespace GIWEB.Controllers
                 return NotFound();
             }
 
-            var owners = await _context.Owners.FindAsync(id);
+            var owners = await _context.Owner.FindAsync(id);
             if (owners == null)
             {
                 return NotFound();
@@ -86,9 +86,9 @@ namespace GIWEB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Cpf,Rg,Tel,Cel,Email,Address")] Owner owners)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Cpf,Rg,Tel,Cel,Email,Address")] Owner owner)
         {
-            if (id != owners.Id)
+            if (id != owner.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace GIWEB.Controllers
             {
                 try
                 {
-                    _context.Update(owners);
+                    _context.Update(owner);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OwnersExists(owners.Id))
+                    if (!OwnersExists(owner.Id))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace GIWEB.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(owners);
+            return View(owner);
         }
 
         // GET: Owners/Delete/5
@@ -124,7 +124,7 @@ namespace GIWEB.Controllers
                 return NotFound();
             }
 
-            var owners = await _context.Owners
+            var owners = await _context.Owner
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (owners == null)
             {
@@ -139,15 +139,15 @@ namespace GIWEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var owners = await _context.Owners.FindAsync(id);
-            _context.Owners.Remove(owners);
+            var owners = await _context.Owner.FindAsync(id);
+            _context.Owner.Remove(owners);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool OwnersExists(int id)
         {
-            return _context.Owners.Any(e => e.Id == id);
+            return _context.Owner.Any(e => e.Id == id);
         }
     }
 }

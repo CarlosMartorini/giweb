@@ -8,16 +8,6 @@ namespace GIWEB.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "ContractId",
-                table: "Owners",
-                nullable: true);
-
-            migrationBuilder.AddColumn<int>(
-                name: "PropertieId",
-                table: "Owners",
-                nullable: true);
-
             migrationBuilder.CreateTable(
                 name: "Contract",
                 columns: table => new
@@ -78,7 +68,7 @@ namespace GIWEB.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Address = table.Column<string>(nullable: true),
-                    N = table.Column<string>(nullable: true),
+                    Num = table.Column<string>(nullable: true),
                     Neighborhood = table.Column<string>(nullable: true),
                     Cep = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
@@ -139,56 +129,65 @@ namespace GIWEB.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Owner",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Cpf = table.Column<string>(nullable: true),
+                    Rg = table.Column<string>(nullable: true),
+                    Tel = table.Column<string>(nullable: true),
+                    Cel = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    ContractId = table.Column<int>(nullable: true),
+                    PropertieId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Owner", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Owner_Contract_ContractId",
+                        column: x => x.ContractId,
+                        principalTable: "Contract",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Owner_Propertie_PropertieId",
+                        column: x => x.PropertieId,
+                        principalTable: "Propertie",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Owners_ContractId",
-                table: "Owners",
+                name: "IX_Owner_ContractId",
+                table: "Owner",
                 column: "ContractId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Owners_PropertieId",
-                table: "Owners",
+                name: "IX_Owner_PropertieId",
+                table: "Owner",
                 column: "PropertieId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tenant_ContractId",
                 table: "Tenant",
                 column: "ContractId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Owners_Contract_ContractId",
-                table: "Owners",
-                column: "ContractId",
-                principalTable: "Contract",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Owners_Propertie_PropertieId",
-                table: "Owners",
-                column: "PropertieId",
-                principalTable: "Propertie",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Owners_Contract_ContractId",
-                table: "Owners");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Owners_Propertie_PropertieId",
-                table: "Owners");
-
             migrationBuilder.DropTable(
                 name: "Guarantor");
 
             migrationBuilder.DropTable(
-                name: "Plots");
+                name: "Owner");
 
             migrationBuilder.DropTable(
-                name: "Propertie");
+                name: "Plots");
 
             migrationBuilder.DropTable(
                 name: "Spouse");
@@ -197,23 +196,10 @@ namespace GIWEB.Migrations
                 name: "Tenant");
 
             migrationBuilder.DropTable(
+                name: "Propertie");
+
+            migrationBuilder.DropTable(
                 name: "Contract");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Owners_ContractId",
-                table: "Owners");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Owners_PropertieId",
-                table: "Owners");
-
-            migrationBuilder.DropColumn(
-                name: "ContractId",
-                table: "Owners");
-
-            migrationBuilder.DropColumn(
-                name: "PropertieId",
-                table: "Owners");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace GIWEB.Data
         {
         }
 
-        public DbSet<Owner> Owners { get; set; }
+        public DbSet<Owner> Owner { get; set; }
         public DbSet<Propertie> Propertie { get; set; }
         public DbSet<Tenant> Tenant { get; set; }
         public DbSet<Spouse> Spouse { get; set; }
